@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login and Registration form</title>
+</head>
+<body>
+<body>
+<!--create a sign up form 
+	1 create a wrapper div -->
+	<div class="container">
+		<!--Heading of our form-->
+		<h2>Reg. Form</h2>
+		<!--create form elements-->
+		<!--we want to call our signUp function onsubmit with argument event-->
+<form action="#">
+	<!--every input must be in a form group class-->	
+	<div class="form-group">
+		<input type="text" name="fname" id="fname" placeholder="First Name" required>
+	</div>
+	<div class="form-group">
+		<input type="text" name="lname" id="lname" placeholder="Last Name" required>
+	</div>
+	<div class="form-group">
+		<input type="email" name="email" id="email" placeholder="Email Address" required>
+	</div>
+	<div class="form-group">
+		<input type="password" name="pwd" id="pwd" placeholder="Password" required>
+	</div>
+	<div class="form-group">
+		<button type="submit" onclick="saveData()" id="save_btn" class="btn btn-default">Sign Up</button>
+	</div>
+</form>
+<!-- we want to display it beneath the -->
+<h2>My information</h2>
+<div id="output">
+	<!--User data-->
+</div>
+	</div>
+	<script type="text/javascript">
+function saveData() {
+	let fname,lname,email,pwd; 
+	fname=document.getElementById("fname").value;
+	lname=document.getElementById("lname").value;
+	email=document.getElementById("email").value;
+	pwd=document.getElementById("pwd").value;
+
+	let user_records = new Array();
+	user_recods= JSON.parse(localStorage.getItem("users"))?JSON.parse(localStorage.getItem("usrs")):[]
+	if (user_recods.some((v)=>{return v.email==email && v.pwd==pwd})) {
+		alert("login Pass");
+		window.location.href="index.html"
+	}
+	else{
+		user_recods.push({
+			"name":name,
+			"email":email,
+			"psw":psw
+		})
+		localStorage.setItem("users",JSON.stringify(user_records));
+	}
+
+}
+	</script>
+</body>
+</html>
